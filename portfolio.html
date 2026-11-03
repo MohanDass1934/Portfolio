@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohan S | .NET Full Stack Developer</title>
+<meta name="description" content="Mohan S - .NET Full Stack Developer specialising in ASP.NET Core, Blazor, SQL Server and ERP systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f17; --bg2:#111826; --card:#141c2b; --line:#222d42;
+  --text:#e6ebf5; --muted:#8e9bb3; --accent:#5b8cff; --accent2:#22d3ee;
+  --radius:16px;
+}
+:root[data-theme="light"]{
+  --bg:#f6f8fc; --bg2:#ffffff; --card:#ffffff; --line:#e2e8f2;
+  --text:#101828; --muted:#5b6678; --accent:#2f5bff; --accent2:#0891b2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:min(1100px,92%);margin:0 auto}
+section{padding:90px 0}
+h2.title{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;display:block}
+.sub{color:var(--muted);max-width:640px;margin-bottom:44px}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-weight:700;font-size:1.1rem}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:26px;align-items:center}
+.links a{font-size:.9rem;color:var(--muted);transition:.2s}
+.links a:hover{color:var(--text)}
+.theme{background:var(--card);border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:1rem}
+.menu{display:none;background:none;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-180px;top:-120px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 35%,transparent),transparent 65%);filter:blur(40px);z-index:0}
+.hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.3fr .9fr;gap:50px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:var(--card);margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.08;letter-spacing:-.035em;font-weight:700}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:1.08rem;margin:22px 0 32px;max-width:560px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 24px;border-radius:12px;font-weight:600;font-size:.95rem;transition:.2s;border:1px solid var(--line)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn.ghost{background:var(--card)}
+.btn.ghost:hover{border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.stat b{display:block;font-size:2rem;letter-spacing:-.03em;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:.85rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:50px}
+.about p{color:var(--muted);margin-bottom:16px}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:grid;gap:14px;align-self:start}
+.fact{display:flex;justify-content:space-between;gap:16px;font-size:.92rem;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.fact:last-child{border:0;padding:0}
+.fact span{color:var(--muted)}
+
+/* skills */
+.skills{background:var(--bg2);border-block:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{font-size:1rem;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.76rem;padding:5px 11px;border-radius:8px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+:root[data-theme="light"] .tag{color:var(--accent)}
+
+/* timeline */
+.timeline{position:relative;padding-left:30px;border-left:2px solid var(--line);display:grid;gap:34px}
+.job{position:relative}
+.job::before{content:"";position:absolute;left:-39px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+.job .when{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent2)}
+.job h3{font-size:1.15rem;margin:4px 0 2px}
+.job .org{color:var(--muted);margin-bottom:12px;font-size:.93rem}
+.job ul{list-style:none;display:grid;gap:9px}
+.job li{color:var(--muted);font-size:.93rem;padding-left:20px;position:relative}
+.job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.project{display:flex;flex-direction:column;gap:12px}
+.project .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.project h3{font-size:1.1rem}
+.meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.role{font-size:.82rem;color:var(--accent2)}
+.project ul{list-style:none;display:grid;gap:8px;flex:1}
+.project li{color:var(--muted);font-size:.9rem;padding-left:18px;position:relative}
+.project li::before{content:"•";position:absolute;left:2px;color:var(--accent)}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.edu .card b{color:var(--accent2);font-family:'JetBrains Mono',monospace;font-size:.8rem}
+.edu .card h3{margin:6px 0 4px}
+.edu .card p{color:var(--muted);font-size:.9rem}
+
+/* contact */
+.contact-box{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 18%,var(--card)),var(--card));border:1px solid var(--line);border-radius:24px;padding:clamp(30px,6vw,60px);text-align:center}
+.contact-box h2{font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.03em;margin-bottom:12px}
+.contact-box p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 0 40px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .hero .container,.about{grid-template-columns:1fr}
+  .links{position:absolute;top:66px;left:0;right:0;background:var(--bg);flex-direction:column;padding:20px;border-bottom:1px solid var(--line);display:none;gap:18px}
+  .links.open{display:flex}
+  .menu{display:block}
+  section{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">mohan<span>.dev</span></a>
+    <button class="menu" id="menu" aria-label="Menu">☰</button>
+    <div class="links" id="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" aria-label="Toggle theme">☾</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div>
+      <div class="badge"><span class="dot"></span> Open to opportunities</div>
+      <h1>Hi, I'm <span class="grad">Mohan S</span>.<br>.NET Full Stack Developer.</h1>
+      <p class="lead">I build ERP systems, hallmarking compliance tools and cross-platform apps with ASP.NET Core, Blazor and SQL Server, from requirements all the way to production deployment.</p>
+      <div class="btns">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn ghost">Contact Me</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2+</b><span>Years of experience</span></div>
+      <div class="stat"><b>4+</b><span>Production web apps</span></div>
+      <div class="stat"><b>5+</b><span>Third-party API integrations</span></div>
+      <div class="stat"><b>38+</b><span>Showrooms deployed (Tanishq)</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+    <div class="reveal">
+      <span class="eyebrow">About</span>
+      <h2 class="title">Building reliable business software</h2>
+      <p>I'm a .NET Full Stack Developer with over 2 years of hands-on experience in ASP.NET Core, C#, Blazor Server and SQL Server. I enjoy building ERP and business applications, designing databases, integrating RESTful APIs and modernising legacy systems.</p>
+      <p>I've delivered clean, user-friendly interfaces across gold trading, hallmarking, retail and HRM. I also handle deployments end to end, including IIS configuration, production debugging and remote support for clients.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><span>Location</span><b>Hosur, Tamil Nadu</b></div>
+      <div class="fact"><span>Current role</span><b>Software Engineer</b></div>
+      <div class="fact"><span>Company</span><b>CreativeTech</b></div>
+      <div class="fact"><span>Languages</span><b>Tamil · English</b></div>
+      <div class="fact"><span>Email</span><b>smohandass1934@gmail.com</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="container">
+    <span class="eyebrow">Skills</span>
+    <h2 class="title">Tech I work with</h2>
+    <p class="sub">The stack I use day to day to ship production applications.</p>
+    <div class="grid reveal">
+      <div class="card"><h3>Languages</h3><div class="tags"><span class="tag">C#</span><span class="tag">JavaScript</span><span class="tag">Java</span></div></div>
+      <div class="card"><h3>Frameworks</h3><div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">Blazor Server</span><span class="tag">Blazor Hybrid</span><span class="tag">Windows Forms</span><span class="tag">ADO.NET</span><span class="tag">Dapper</span></div></div>
+      <div class="card"><h3>Web</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">jQuery</span><span class="tag">REST APIs</span><span class="tag">Bootstrap</span><span class="tag">Ant Design Blazor</span></div></div>
+      <div class="card"><h3>Databases</h3><div class="tags"><span class="tag">MS SQL Server</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">SqlLocalDB</span></div></div>
+      <div class="card"><h3>APIs &amp; Services</h3><div class="tags"><span class="tag">Meta Graph API (WhatsApp)</span><span class="tag">GST e-Invoicing (NIC / White Books)</span><span class="tag">BIS HUID Manak Online</span><span class="tag">IHttpClientFactory</span></div></div>
+      <div class="card"><h3>Tools</h3><div class="tags"><span class="tag">Git</span><span class="tag">WinSCP</span><span class="tag">DinkToPdf</span><span class="tag">Crystal Reports</span><span class="tag">Figma</span><span class="tag">Canva</span><span class="tag">MS Office</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <span class="eyebrow">Experience</span>
+    <h2 class="title">Where I've worked</h2>
+    <p class="sub">Professional experience building and shipping real-world applications.</p>
+    <div class="timeline">
+      <div class="job reveal">
+        <span class="when">Sep 2024 – Present</span>
+        <h3>Software Engineer</h3>
+        <div class="org">CreativeTech</div>
+        <ul>
+          <li>Delivered 4+ production web applications using Blazor Server and ASP.NET Core Web API, covering ERP, hallmarking compliance and desktop automation.</li>
+          <li>Integrated 5+ third-party RESTful APIs, including Meta WhatsApp, GST e-invoicing (NIC/White Books) and South Indian Bank / Axis Bank data feeds.</li>
+          <li>Designed and optimised SQL Server schemas and stored procedures, reducing report query time and supporting multi-branch, multi-financial-year data isolation.</li>
+          <li>Reverse-engineered and modernised legacy Windows Forms ERP systems, migrating business logic to Blazor Server.</li>
+          <li>Managed end-to-end deployment on client environments, including IIS configuration, production debugging and remote desktop support.</li>
+          <li>Worked in an agile team of 5, owning full-stack features from requirement to deployment.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <span class="when">Mar 2023 – Jun 2023</span>
+        <h3>Intern</h3>
+        <div class="org">Ambaavin</div>
+        <ul>
+          <li>Developed and maintained ERP modules for inventory, sales and finance using Windows Forms and C#.</li>
+          <li>Integrated Crystal Reports for dynamic business reporting.</li>
+          <li>Provided on-site and remote support, bug fixing and end-user training.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="projects">
+  <div class="container">
+    <span class="eyebrow">Projects</span>
+    <h2 class="title">Selected work</h2>
+    <p class="sub">A look at the products I've built and shipped.</p>
+    <div class="projects">
+
+      <div class="card project reveal">
+        <div class="top"><h3>iOS Application – SJS Gold</h3><span class="meta">Jun 2026 – Present</span></div>
+        <div class="role">Developer</div>
+        <ul>
+          <li>Cross-platform iOS and Android app with Blazor Hybrid (.NET MAUI) for mobile access to bullion ERP workflows.</li>
+          <li>Handled iOS release setup: certificates, provisioning, signing, TestFlight beta and App Store submission.</li>
+          <li>Connected to ASP.NET Core Web API with role-based auth; redesigned navigation so modules open as tabs.</li>
+        </ul>
+        <div class="tags"><span class="tag">Blazor Hybrid</span><span class="tag">.NET MAUI</span><span class="tag">Web API</span><span class="tag">SQL Server</span><span class="tag">Ant Design</span></div>
+      </div>
+
+      <div class="card project reveal">
+        <div class="top"><h3>Bullion ERP</h3><span class="meta">Oct 2025 – Present</span></div>
+        <div class="role">Developer &amp; Lead · Team of 5</div>
+        <ul>
+          <li>10+ module ERP for a gold and bullion trading business: purchase, sales, dispatch, stock, payments and GST compliance.</li>
+          <li>WhatsApp notifications via Meta Graph API, GST e-Invoicing through NIC/White Books and live gold rate updates.</li>
+          <li>Role-based authorization, Chart of Accounts, financial reporting with running balances.</li>
+          <li>South Indian Bank and Axis Bank reconciliation; implemented VAPT security audit recommendations.</li>
+          <li>Role-based dashboards for Trading, Logistics and Accounts with real-time KPIs.</li>
+        </ul>
+        <div class="tags"><span class="tag">Blazor Server</span><span class="tag">Web API</span><span class="tag">SQL Server</span><span class="tag">Ant Design</span></div>
+      </div>
+
+      <div class="card project reveal">
+        <div class="top"><h3>Tanishq ISP Karat Meter</h3><span class="meta">Jul 2025 – Dec 2025</span></div>
+        <div class="role">Developer &amp; Lead · Solo</div>
+        <ul>
+          <li>Desktop app for Tanishq to assess gold purity and manage the gold exchange process.</li>
+          <li>Product image capture and electronic weighing scale communication via serial (COM) port.</li>
+          <li>Integrated with the NAL Hallmarking XRF machine to fetch purity readings automatically.</li>
+          <li>Deployed across 38+ Tanishq showrooms, speeding up valuation and exchange.</li>
+        </ul>
+        <div class="tags"><span class="tag">Windows Forms</span><span class="tag">Blazor WebView</span><span class="tag">SqlLocalDB</span></div>
+      </div>
+
+      <div class="card project reveal">
+        <div class="top"><h3>Hallmarking File Exchange</h3><span class="meta">Apr 2025 – Jun 2025</span></div>
+        <div class="role">Developer · Team of 2</div>
+        <ul>
+          <li>Automated file exchange between client companies (Infinity &amp; Sureeri) and the Titan team's SFTP server via WinSCP.</li>
+          <li>WhatsApp API alerts for missing or unmatched files, with automatic regeneration and resubmission.</li>
+          <li>Stage-wise status tracking in SQL Server: inbound → GRN → acknowledgement → dispatch.</li>
+        </ul>
+        <div class="tags"><span class="tag">C#</span><span class="tag">.NET Console</span><span class="tag">SQL Server</span><span class="tag">WinSCP</span><span class="tag">WhatsApp API</span></div>
+      </div>
+
+      <div class="card project reveal">
+        <div class="top"><h3>XRFAPI Software (Govt. BIS Project)</h3><span class="meta">Dec 2024 – Mar 2025</span></div>
+        <div class="role">Developer · Team of 2</div>
+        <ul>
+          <li>Cross-platform desktop app helping hallmarking centres comply with BIS norms and manage gold testing data.</li>
+          <li>Connects to both local SQLite and remote MS SQL Server for flexible storage.</li>
+          <li>AMC license validation module that checks contract expiry at startup and shows renewal reminders.</li>
+        </ul>
+        <div class="tags"><span class="tag">Blazor Hybrid</span><span class="tag">.NET 8 MAUI</span><span class="tag">SQLite</span><span class="tag">SQL Server</span></div>
+      </div>
+
+      <div class="card project reveal">
+        <div class="top"><h3>HRM System</h3><span class="meta">Oct 2024 – Dec 2024</span></div>
+        <div class="role">Developer · Team of 4</div>
+        <ul>
+          <li>HRM system managing employee records, attendance, leave and payroll.</li>
+          <li>Role-based access control, secure authentication and real-time data updates.</li>
+          <li>Console app that fetches punch data from a biometric machine and syncs it with the HRM system.</li>
+        </ul>
+        <div class="tags"><span class="tag">Blazor Server</span><span class="tag">REST API</span><span class="tag">Ant Design</span><span class="tag">SQL Server</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <span class="eyebrow">Education</span>
+    <h2 class="title">Academic background</h2>
+    <p class="sub"></p>
+    <div class="edu reveal">
+      <div class="card"><b>2018 – 2021</b><h3>Bachelor of Computer Application (BCA)</h3><p>SVM Arts and Science College, Uthangarai<br>CGPA: 8.1</p></div>
+      <div class="card"><b>2016 – 2018</b><h3>Higher Secondary Certificate (HSC)</h3><p>CJM Hr Sec School, Thanipadi, Tamil Nadu<br>76.5%</p></div>
+      <div class="card"><b>2014 – 2016</b><h3>SSLC</h3><p>Indian Matric Hr Sec School, Harur, Tamil Nadu<br>68.5%</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="container">
+    <div class="contact-box reveal">
+      <h2>Let's work together</h2>
+      <p>Have a project, role or idea in mind? I'd love to hear about it.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:smohandass1934@gmail.com">✉ Email Me</a>
+        <a class="btn ghost" href="tel:+916374057479">☎ +91 63740 57479</a>
+        <a class="btn ghost" href="https://github.com/MohanDass1934" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Mohan S · Hosur, Tamil Nadu</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const links = document.getElementById('links');
+  document.getElementById('menu').onclick = () => links.classList.toggle('open');
+  links.querySelectorAll('a').forEach(a => a.onclick = () => links.classList.remove('open'));
+
+  // theme toggle
+  const root = document.documentElement, btn = document.getElementById('theme');
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e){}
+  if (saved) root.setAttribute('data-theme', saved);
+  const sync = () => btn.textContent = root.getAttribute('data-theme') === 'light' ? '☾' : '☀';
+  sync();
+  btn.onclick = () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+    sync();
+  };
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
