@@ -1,5 +1,5 @@
 
-<h1 align="center">Hi 👋, I'm Mohan Dass</h1>
+<h1 align="center">Hi 👋, I'm Mohan</h1>
 <h3 align="center">Software Developer | .NET & Blazor Developer</h3>
 
 <p align="center">
